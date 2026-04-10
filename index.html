@@ -12,6 +12,15 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+
+        // The "Phone Home" check
+fetch('https://api.yourdomain.com/verify-license') // This will fail if they copy the code to a new site
+  .then(response => {
+      if (!response.ok) {
+          document.body.innerHTML = "<h1>Unauthorized Access. License Required.</h1>";
+          window.location.href = "https://your-main-site.com";
+      }
+  });
         tailwind.config = {
             darkMode: 'class',
             theme: {
